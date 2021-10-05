@@ -15,10 +15,9 @@ router.get('/:productId', function(req, res) {
         if(err){
             return res.status(422).send({errors: [{title: 'Product error', detail: 'Product not found'}]})
         }
-        return res.json(foundProducts)
 
+        return res.json(foundProducts)
     })
 })
-
 
 module.exports = router
