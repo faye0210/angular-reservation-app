@@ -1,9 +1,8 @@
 const express = require('express')
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 const config = require('./config/dev')
-const FakeDb = require('./fake-db');
-const product = require('./model/product');
-const productRoutes = require('./routes/product')
+const FakeDb = require('./fake-db')
+const productRoutes = require('../server/routes/product')
 
 
 mongoose.connect(config.DB_URI).then(
@@ -15,10 +14,10 @@ mongoose.connect(config.DB_URI).then(
 
 const app = express()
 
-app.use('api/v1/products', productRoutes)
+app.use('/api/v1/products', productRoutes)
 
 const PORT = process.env.PORT || '3001'
 
-app.listen(PORT, function() {
+app.listen(PORT, function(){
     console.log('I am running!')
 })
