@@ -17,7 +17,18 @@
                                   <i class="fa fa-twitter"></i>
                               </a>
                           </div>
-                          <form class="register-form">
+                          <form class="register-form" #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+                              <label>User Name</label>
+                              <div class="input-group form-group-no-border">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text">
+                                      <i class="nc-icon nc-single-02"></i>
+                                  </span>
+                                </div>
+
+                                  <input ngModel type="text" name="username" class="form-control" placeholder="User Name" required>
+                              </div>
+
                               <label>Email</label>
                               <div class="input-group form-group-no-border">
                                 <div class="input-group-prepend">
@@ -26,7 +37,14 @@
                                   </span>
                                 </div>
 
-                                  <input type="text" class="form-control" placeholder="Email">
+                                  <input
+                                   ngModel
+                                   type="email"
+                                   name="email"
+                                   class="form-control"
+                                   pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
+                                   placeholder="Email"
+                                   required>
                               </div>
 
                               <label>Password</label>
@@ -36,10 +54,20 @@
                                       <i class="nc-icon nc-key-25"></i>
                                   </span>
                                 </div>
-                                  <input type="text" class="form-control" placeholder="Password">
+                                  <input ngModel type="password" name="password" class="form-control" placeholder="Password over 6 letters" minlength="6" required>
                               </div>
-                              <button class="btn btn-danger btn-block btn-round">Register</button>
+
+                              <label>Password(confirmation)</label>
+                              <div class="input-group form-group-no-border">
+                                  <input ngModel type="password" name="confirmPassword" class="form-control" placeholder="Password(confirmation)" required>
+                              </div>
+
+                              <button [disabled]="!registerForm.valid" class="btn btn-danger btn-block btn-round" type="submit">Register</button>
                           </form>
+                          <br>
+                          <div *ngIf="errors && errors.length>0" class="alert alert-danger">
+                              <p *ngFor="let error of errors">{{ error.detail}}</p>
+                          </div>
                           <div class="forgot">
                               <a href="#" class="btn btn-link btn-danger">Forgot password?</a>
                           </div>

@@ -28,7 +28,9 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     CommonModule
   ],
-  providers: [ ProductService ],
+  providers: [
+      ProductService
+    ],
   bootstrap: []
 })
 export class ProductModule { }

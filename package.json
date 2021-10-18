@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start-dev": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -18,9 +19,12 @@
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
     "bootstrap": "^5.1.1",
     "express": "^4.17.1",
     "glob-parent": "^6.0.1",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.8",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.13",
